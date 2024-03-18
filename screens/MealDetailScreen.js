@@ -1,25 +1,32 @@
-import { useLayoutEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { useLayoutEffect } from "react";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 
-import List from '../components/MealDetail/List';
-import Subtitle from '../components/MealDetail/Subtitle';
-import MealDetails from '../components/MealDetails';
-import { MEALS } from '../data/dummy-data';
+import List from "../components/MealDetail/List";
+import Subtitle from "../components/MealDetail/Subtitle";
+import MealDetails from "../components/MealDetails";
+import { MEALS } from "../data/dummy-data";
+import IconButton from "../components/IconButton";
 
 function MealDetailScreen({ route, navigation }) {
   const mealId = route.params.mealId;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  function headerButtonPressHandler(){
-    console.log('Pressed!');
+  function headerButtonPressHandler() {
+    console.log("Pressed!");
   }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title='Tap me' onPress={headerButtonPressHandler}/>
-      }
+        return (
+        <IconButton
+          icon="star"
+          color="white"
+          onPress={headerButtonPressHandler}
+        />
+        );
+      },
     });
   }, [navigation, headerButtonPressHandler]);
 
@@ -49,26 +56,26 @@ export default MealDetailScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {
-    marginBottom: 32
+    marginBottom: 32,
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 350,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 24,
     margin: 8,
-    textAlign: 'center',
-    color: 'white',
+    textAlign: "center",
+    color: "white",
   },
   detailText: {
-    color: 'white',
+    color: "white",
   },
   listOuterContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   listContainer: {
-    width: '80%',
+    width: "80%",
   },
 });
