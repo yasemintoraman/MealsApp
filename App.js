@@ -55,7 +55,8 @@ export default function App() {
     //fragment tags
     <>
       <StatusBar style="light" />
-      <FavoritesContextProvider>
+      {/*<FavoritesContextProvider> */}
+      <Provider>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -99,7 +100,8 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      </FavoritesContextProvider>
+      </Provider>
+      { /* </FavoritesContextProvider> */}
     </>
   );
 }
